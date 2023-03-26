@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="stateMachineUML251" nsURI="http://www.example.org/stateMachineUML251"
+    nsPrefix="stateMachineUML251">
+  <eSubpackages name="StateMachine">
+    <eClassifiers xsi:type="ecore:EClass" name="Vertex" eSuperTypes="#//NamesSpaces/NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="imcoming" upperBound="-1"
+          eType="#//StateMachine/Transition" derived="true" eOpposite="#//StateMachine/Transition/target"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+          eType="#//StateMachine/Transition" derived="true" eOpposite="#//StateMachine/Transition/source"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//StateMachine/Region"
+          eOpposite="#//StateMachine/Region/subvertex"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//NamesSpaces/NameSpace">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1"
+          eType="#//StateMachine/Transition" containment="true" eOpposite="#//StateMachine/Transition/container"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subvertex" upperBound="-1"
+          eType="#//StateMachine/Vertex" containment="true" eOpposite="#//StateMachine/Vertex/container"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NamesSpaces/NameSpace">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//StateMachine/Vertex" eOpposite="#//StateMachine/Vertex/imcoming"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+          eType="#//StateMachine/Vertex" eOpposite="#//StateMachine/Vertex/outgoing"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="container" lowerBound="1"
+          eType="#//StateMachine/Region" eOpposite="#//StateMachine/Region/transition"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="effect" eType="#//Behavior/Behavior"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" upperBound="-1"
+          eType="#//Events/Trigger" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Constraint/Constraint"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" upperBound="2"
+          eType="#//StateMachine/TransitionKind" defaultValueLiteral="external"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StateMachine" eSuperTypes="#//Behavior/Behavior">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connrctionPoint" upperBound="-1"
+          eType="#//StateMachine/Pseudostate" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="region" lowerBound="1"
+          upperBound="-1" eType="#//StateMachine/Region" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="submachineState" upperBound="-1"
+          eType="#//StateMachine/State" eOpposite="#//StateMachine/State/statemachine"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//StateMachine/Vertex #//NamesSpaces/NameSpace">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="doActivity" eType="#//Behavior/Behavior"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="exit" eType="#//Behavior/Behavior"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//Behavior/Behavior"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connection" upperBound="-1"
+          eType="#//StateMachine/ConnectionPointReference" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connectionPoint" upperBound="-1"
+          eType="#//StateMachine/Pseudostate" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="region" upperBound="-1"
+          eType="#//StateMachine/Region" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="statemachine" eType="#//StateMachine/StateMachine"
+          eOpposite="#//StateMachine/StateMachine/submachineState"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="deferrableTrigger" upperBound="-1"
+          eType="#//Events/Trigger" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="stateInvariant" eType="#//Constraint/Constraint"
+          containment="true" eOpposite="#//Constraint/Constraint/owningState"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FinalState" eSuperTypes="#//StateMachine/State"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ConnectionPointReference" eSuperTypes="#//StateMachine/Vertex">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="entry" upperBound="-1"
+          eType="#//StateMachine/Pseudostate"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="exit" upperBound="-1"
+          eType="#//StateMachine/Pseudostate"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Pseudostate" eSuperTypes="#//StateMachine/Vertex">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//StateMachine/PseudostateKind"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PseudostateKind">
+      <eLiterals name="initial"/>
+      <eLiterals name="deepHistory" value="1"/>
+      <eLiterals name="shallowHistory" value="2"/>
+      <eLiterals name="join" value="3"/>
+      <eLiterals name="fork" value="4"/>
+      <eLiterals name="junction" value="5"/>
+      <eLiterals name="choice" value="6"/>
+      <eLiterals name="entryPoint" value="7"/>
+      <eLiterals name="exitPoint" value="8"/>
+      <eLiterals name="terminate" value="9"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="TransitionKind" instanceClassName="">
+      <eLiterals name="internal"/>
+      <eLiterals name="local" value="1"/>
+      <eLiterals name="external" value="2"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Behavior">
+    <eClassifiers xsi:type="ecore:EClass" name="Behavior" eSuperTypes="#//Classes/Class">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="precondition" upperBound="-1"
+          eType="#//Constraint/Constraint" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="postcondition" upperBound="-1"
+          eType="#//Constraint/Constraint" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedBehavior" upperBound="-1"
+          eType="#//Behavior/Behavior"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OpaqueBehavior" eSuperTypes="#//Behavior/Behavior">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An OpaqueBehavior is a Behavior whose specification is given in a textual language other than UML.&#xD;&#xA;An OpaqueBehavior has a body that consists of a sequence of text Strings representing alternative means of specifying the required behavior.&#xD;&#xA;A corresponding sequence of language Strings may be used to specify the languages in which each of the body Strings is to be interpreted. &#xD;&#xA;Languages are matched to body Strings by order. &#xD;&#xA;The UML specification does not define how body Strings are interpreted relative to any language, though other specifications may define specific language Strings to be used to indicate interpretation with respect to those specifications (e.g., “OCL” for expressions to be interpreted according to the OCL specification)."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FunctionBehavior" eSuperTypes="#//Behavior/OpaqueBehavior"/>
+  </eSubpackages>
+  <eSubpackages name="Events">
+    <eClassifiers xsi:type="ecore:EClass" name="Event"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MessageEvent" eSuperTypes="#//Events/Event"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ChangeEvent" eSuperTypes="#//Events/Event"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TimeEvent" eSuperTypes="#//Events/Event"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Trigger">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1"
+          eType="#//Events/Event"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Constraint">
+    <eClassifiers xsi:type="ecore:EClass" name="Constraint">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="owningState" eType="#//StateMachine/State"
+          eOpposite="#//StateMachine/State/stateInvariant"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//NamesSpaces/NameSpace"
+          eOpposite="#//NamesSpaces/NameSpace/owneRule"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="NamesSpaces">
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//Element/Element">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="memberNamespace" upperBound="-1"
+          eType="#//NamesSpaces/NameSpace" derived="true" eOpposite="#//NamesSpaces/NameSpace/member"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="namespace" eType="#//NamesSpaces/NameSpace"
+          derived="true" eOpposite="#//NamesSpaces/NameSpace/ownedMember"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NameSpace" eSuperTypes="#//NamesSpaces/NamedElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="owneRule" upperBound="-1"
+          eType="#//Constraint/Constraint" containment="true" eOpposite="#//Constraint/Constraint/context"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="member" upperBound="-1"
+          eType="#//NamesSpaces/NamedElement" derived="true" eOpposite="#//NamesSpaces/NamedElement/memberNamespace"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMember" upperBound="-1"
+          eType="#//NamesSpaces/NamedElement" derived="true" containment="true" eOpposite="#//NamesSpaces/NamedElement/namespace"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="packageableelement" upperBound="-1"
+          eType="#//NamesSpaces/PackageableElement" derived="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="elementImport" upperBound="-1"
+          eType="#//NamesSpaces/ElementImport" containment="true" eOpposite="#//NamesSpaces/ElementImport/importingNamespace"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="packageImport" upperBound="-1"
+          eType="#//NamesSpaces/PackageImport" containment="true" eOpposite="#//NamesSpaces/PackageImport/importingNamespace"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PackageableElement" eSuperTypes="#//NamesSpaces/NamedElement #//Templates/ParameterableElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//NamesSpaces/VisibilityKind"
+          defaultValueLiteral="public"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="owningPackage" eType="#//Packages/Package"
+          eOpposite="#//Packages/Package/packagedElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ElementImport" eSuperTypes="#//Element/DirectedRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="importingNamespace" lowerBound="1"
+          eType="#//NamesSpaces/NameSpace" eOpposite="#//NamesSpaces/NameSpace/elementImport"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="importedElement" lowerBound="1"
+          eType="#//NamesSpaces/PackageableElement"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" upperBound="3"
+          eType="#//NamesSpaces/VisibilityKind" defaultValueLiteral="public"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PackageImport" eSuperTypes="#//Element/DirectedRelationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="importingNamespace" lowerBound="1"
+          eType="#//NamesSpaces/NameSpace" eOpposite="#//NamesSpaces/NameSpace/packageImport"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="visility" upperBound="3"
+          eType="#//NamesSpaces/VisibilityKind" defaultValueLiteral="public"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="VisibilityKind">
+      <eLiterals name="public"/>
+      <eLiterals name="private" value="1"/>
+      <eLiterals name="protected" value="2"/>
+      <eLiterals name="package" value="3"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Classes">
+    <eClassifiers xsi:type="ecore:EClass" name="Class">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="superClass" upperBound="-1"
+          eType="#//Classes/Class" derived="true"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Element">
+    <eClassifiers xsi:type="ecore:EClass" name="Element">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="relationship" upperBound="-1"
+          eType="#//Element/Relationship" derived="true" eOpposite="#//Element/Relationship/relatedElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="directedrelationshipForTarget"
+          upperBound="-1" eType="#//Element/DirectedRelationship" derived="true" eOpposite="#//Element/DirectedRelationship/target"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="directedrelationshipForSouce"
+          upperBound="-1" eType="#//Element/DirectedRelationship" derived="true" eOpposite="#//Element/DirectedRelationship/souce"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElement" upperBound="-1"
+          eType="#//Element/Element" containment="true" eOpposite="#//Element/Element/owner"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Element/Element"
+          eOpposite="#//Element/Element/ownedElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Relationship" eSuperTypes="#//Element/Element">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="relatedElement" lowerBound="1"
+          upperBound="-1" eType="#//Element/Element" derived="true" eOpposite="#//Element/Element/relationship"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DirectedRelationship" eSuperTypes="#//Element/Relationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          upperBound="-1" eType="#//Element/Element" derived="true" eOpposite="#//Element/Element/directedrelationshipForTarget"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="souce" lowerBound="1"
+          upperBound="-1" eType="#//Element/Element" derived="true" eOpposite="#//Element/Element/directedrelationshipForSouce"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Templates">
+    <eClassifiers xsi:type="ecore:EClass" name="TemplateSignature" eSuperTypes="#//Element/Element">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="template" lowerBound="1"
+          eType="#//Templates/TemplateableElement" eOpposite="#//Templates/TemplateableElement/ownedTemplateSignature"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameter" upperBound="-1"
+          eType="#//Templates/TemplateParameter" containment="true" eOpposite="#//Templates/TemplateParameter/signature"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
+          upperBound="-1" eType="#//Templates/TemplateParameter"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TemplateableElement" eSuperTypes="#//Element/Element">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTemplateSignature"
+          eType="#//Templates/TemplateSignature" containment="true" eOpposite="#//Templates/TemplateSignature/template"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TemplateParameter" eSuperTypes="#//Element/Element">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="signature" lowerBound="1"
+          eType="#//Templates/TemplateSignature" eOpposite="#//Templates/TemplateSignature/ownedParameter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameteredElement"
+          eType="#//Templates/ParameterableElement" containment="true" eOpposite="#//Templates/ParameterableElement/owningTemplateParameter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameteredElement" lowerBound="1"
+          eType="#//Templates/ParameterableElement" eOpposite="#//Templates/ParameterableElement/templateParameter"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ParameterableElement" eSuperTypes="#//Element/Element">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="owningTemplateParameter"
+          eType="#//Templates/TemplateParameter" eOpposite="#//Templates/TemplateParameter/ownedParameteredElement"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="templateParameter" eType="#//Templates/TemplateParameter"
+          eOpposite="#//Templates/TemplateParameter/parameteredElement"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Packages">
+    <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//NamesSpaces/NameSpace #//NamesSpaces/PackageableElement #//Templates/TemplateableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="packagedElement" upperBound="-1"
+          eType="#//NamesSpaces/PackageableElement" containment="true" eOpposite="#//NamesSpaces/PackageableElement/owningPackage"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="URI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="packageMerge" upperBound="-1"
+          eType="#//Packages/PackageMerge" containment="true" eOpposite="#//Packages/PackageMerge/receivingPackage"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PackageMerge">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="receivingPackage" lowerBound="1"
+          eType="#//Packages/Package" eOpposite="#//Packages/Package/packageMerge"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mergedPackage" lowerBound="1"
+          eType="#//Packages/Package"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//Packages/Package">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewpoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>
