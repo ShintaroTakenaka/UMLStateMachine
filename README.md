@@ -1,1 +1,2 @@
 # UMLStateMachine
+UML仕様書からUMLステートマシン図のメタモデルを再現する
