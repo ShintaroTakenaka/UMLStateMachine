@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/UML/src-gen" creationIcons="false" editDirectory="/UML.edit/src-gen"
+    editorDirectory="/UML.editor/src-gen" modelPluginID="UML" modelName="UML" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>uML.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="UML" disposableProviderFactory="true" ecorePackage="uML.ecore#/">
+    <nestedGenPackages prefix="BehaviorPackage" disposableProviderFactory="true" ecorePackage="uML.ecore#//behaviorPackage">
+      <nestedGenPackages prefix="BehaviorPackage" disposableProviderFactory="true"
+          ecorePackage="uML.ecore#//behaviorPackage/BehaviorPackage">
+        <genClasses ecoreClass="uML.ecore#//behaviorPackage/BehaviorPackage/Behavior">
+          <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference uML.ecore#//behaviorPackage/BehaviorPackage/Behavior/transition"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uML.ecore#//behaviorPackage/BehaviorPackage/Behavior/method"/>
+        </genClasses>
+      </nestedGenPackages>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="ClassPackage" disposableProviderFactory="true" ecorePackage="uML.ecore#//classPackage">
+      <nestedGenPackages prefix="ClassPackage" disposableProviderFactory="true" ecorePackage="uML.ecore#//classPackage/ClassPackage">
+        <genClasses ecoreClass="uML.ecore#//classPackage/ClassPackage/Class">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/ClassPackage/Class/superclass"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//classPackage/ClassPackage/Class/ownedClassAttribute"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//classPackage/ClassPackage/Class/ownedOperation"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//classPackage/ClassPackage/Class/nestedClassifier"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="PropertyPackage" disposableProviderFactory="true"
+          ecorePackage="uML.ecore#//classPackage/PropertyPackage">
+        <genClasses ecoreClass="uML.ecore#//classPackage/PropertyPackage/Property">
+          <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference uML.ecore#//classPackage/PropertyPackage/Property/owingAssociation"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/PropertyPackage/Property/association"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//classPackage/PropertyPackage/Property/qualifier"/>
+          <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference uML.ecore#//classPackage/PropertyPackage/Property/associationEnd"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="OperationPackage" disposableProviderFactory="true"
+          ecorePackage="uML.ecore#//classPackage/OperationPackage">
+        <genClasses ecoreClass="uML.ecore#//classPackage/OperationPackage/Operation"/>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="AssociationPackage" disposableProviderFactory="true"
+          ecorePackage="uML.ecore#//classPackage/AssociationPackage">
+        <genClasses ecoreClass="uML.ecore#//classPackage/AssociationPackage/Association">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//classPackage/AssociationPackage/Association/ownedEnd"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/AssociationPackage/Association/navigableOwnedEnd"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/AssociationPackage/Association/memberEnd"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="StructuredClassifierPackage" disposableProviderFactory="true"
+          ecorePackage="uML.ecore#//classPackage/StructuredClassifierPackage">
+        <genClasses ecoreClass="uML.ecore#//classPackage/StructuredClassifierPackage/StructuredClassifier">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/StructuredClassifier/ownedAttribute"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/StructuredClassifier/part"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/StructuredClassifier/role"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/StructuredClassifier/ownedConnector"/>
+        </genClasses>
+        <genClasses ecoreClass="uML.ecore#//classPackage/StructuredClassifierPackage/ConnectableElement">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/ConnectableElement/end"/>
+        </genClasses>
+        <genClasses ecoreClass="uML.ecore#//classPackage/StructuredClassifierPackage/Connector">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/Connector/type"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/Connector/end"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/Connector/contract"/>
+        </genClasses>
+        <genClasses ecoreClass="uML.ecore#//classPackage/StructuredClassifierPackage/ConnectorEnd">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/ConnectorEnd/definingEnd"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/StructuredClassifierPackage/ConnectorEnd/role"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="ClassifierPackage" disposableProviderFactory="true"
+          ecorePackage="uML.ecore#//classPackage/ClassifierPackage">
+        <genClasses ecoreClass="uML.ecore#//classPackage/ClassifierPackage/Classifier">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//classPackage/ClassifierPackage/Classifier/attribute"/>
+          <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference uML.ecore#//classPackage/ClassifierPackage/Classifier/nestingClass"/>
+        </genClasses>
+      </nestedGenPackages>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="StateMachinePackage" disposableProviderFactory="true"
+        ecorePackage="uML.ecore#//stateMachinePackage">
+      <nestedGenPackages prefix="StatePackage" disposableProviderFactory="true" ecorePackage="uML.ecore#//stateMachinePackage/StatePackage">
+        <genClasses ecoreClass="uML.ecore#//stateMachinePackage/StatePackage/Region">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Region/supervertex"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Region/transition"/>
+        </genClasses>
+        <genClasses ecoreClass="uML.ecore#//stateMachinePackage/StatePackage/Vertex">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Vertex/incomming"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Vertex/outgoing"/>
+          <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Vertex/container"/>
+        </genClasses>
+        <genClasses ecoreClass="uML.ecore#//stateMachinePackage/StatePackage/Transition">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Transition/target"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Transition/souce"/>
+          <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Transition/container"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/Transition/effect"/>
+        </genClasses>
+        <genClasses ecoreClass="uML.ecore#//stateMachinePackage/StatePackage/StateMachine">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/StateMachine/region"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/StateMachine/connrctionPoint"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/StateMachine/submachineState"/>
+        </genClasses>
+        <genClasses ecoreClass="uML.ecore#//stateMachinePackage/StatePackage/State">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/State/region"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/State/connectionPoint"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/State/connection"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/State/statemachine"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/State/entry"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/State/exit"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/State/doActivity"/>
+        </genClasses>
+        <genClasses ecoreClass="uML.ecore#//stateMachinePackage/StatePackage/Pseudostate"/>
+        <genClasses ecoreClass="uML.ecore#//stateMachinePackage/StatePackage/ConnectionPointReference">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/ConnectionPointReference/entry"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference uML.ecore#//stateMachinePackage/StatePackage/ConnectionPointReference/exit"/>
+        </genClasses>
+      </nestedGenPackages>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

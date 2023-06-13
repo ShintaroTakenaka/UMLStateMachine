@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uML" nsURI="http://www.example.org/uML" nsPrefix="uML">
+  <eSubpackages name="behaviorPackage" nsURI="http://www.example.org/behaviorPackage"
+      nsPrefix="behaviorPackage">
+    <eSubpackages name="BehaviorPackage" nsURI="http://www.example.org/BehaviorPackage"
+        nsPrefix="BehaviorPackage">
+      <eClassifiers xsi:type="ecore:EClass" name="Behavior" eSuperTypes="#//classPackage/ClassPackage/Class">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="transition" eType="#//stateMachinePackage/StatePackage/Transition"
+            eOpposite="#//stateMachinePackage/StatePackage/Transition/effect"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="method" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="classPackage" nsURI="http://www.example.org/classPackage" nsPrefix="classPackage">
+    <eSubpackages name="ClassPackage" nsURI="http://www.example.org/ClassPackage"
+        nsPrefix="ClassPackage">
+      <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//classPackage/StructuredClassifierPackage/StructuredClassifier">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="superclass" eType="#//classPackage/ClassPackage/Class"
+            derived="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ownedClassAttribute"
+            upperBound="-1" eType="#//classPackage/PropertyPackage/Property" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperation" upperBound="-1"
+            eType="#//classPackage/OperationPackage/Operation" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="nestedClassifier" upperBound="-1"
+            eType="#//classPackage/ClassifierPackage/Classifier" containment="true"
+            eOpposite="#//classPackage/ClassifierPackage/Classifier/nestingClass"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="PropertyPackage" nsURI="http://www.example.org/PropertyPackage"
+        nsPrefix="PropertyPackage">
+      <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//classPackage/StructuredClassifierPackage/StructuredClassifier #//classPackage/StructuredClassifierPackage/ConnectableElement">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="owingAssociation" eType="#//classPackage/AssociationPackage/Association"
+            eOpposite="#//classPackage/AssociationPackage/Association/ownedEnd"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="association" eType="#//classPackage/AssociationPackage/Association"
+            eOpposite="#//classPackage/AssociationPackage/Association/memberEnd"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="qualifier" upperBound="-1"
+            eType="#//classPackage/PropertyPackage/Property" containment="true" eOpposite="#//classPackage/PropertyPackage/Property/associationEnd"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="associationEnd" eType="#//classPackage/PropertyPackage/Property"
+            eOpposite="#//classPackage/PropertyPackage/Property/qualifier"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="OperationPackage" nsURI="http://www.example.org/OperationPackage"
+        nsPrefix="OperationPackage">
+      <eClassifiers xsi:type="ecore:EClass" name="Operation"/>
+    </eSubpackages>
+    <eSubpackages name="AssociationPackage" nsURI="http://www.example.org/AssociationPackage"
+        nsPrefix="AssociationPackage">
+      <eClassifiers xsi:type="ecore:EClass" name="Association" eSuperTypes="#//classPackage/ClassifierPackage/Classifier">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEnd" upperBound="-1"
+            eType="#//classPackage/PropertyPackage/Property" containment="true" eOpposite="#//classPackage/PropertyPackage/Property/owingAssociation"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="navigableOwnedEnd"
+            upperBound="-1" eType="#//classPackage/PropertyPackage/Property"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="memberEnd" lowerBound="2"
+            upperBound="-1" eType="#//classPackage/PropertyPackage/Property" eOpposite="#//classPackage/PropertyPackage/Property/association"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="StructuredClassifierPackage" nsURI="http://www.example.org/StructuredClassifierPackage"
+        nsPrefix="StructuredClassifierPackage">
+      <eClassifiers xsi:type="ecore:EClass" name="StructuredClassifier" eSuperTypes="#//classPackage/ClassifierPackage/Classifier">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
+            eType="#//classPackage/PropertyPackage/Property" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="part" upperBound="-1"
+            eType="#//classPackage/PropertyPackage/Property" derived="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="role" upperBound="-1"
+            eType="#//classPackage/StructuredClassifierPackage/ConnectableElement"
+            derived="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ownedConnector" upperBound="-1"
+            eType="#//classPackage/StructuredClassifierPackage/Connector" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="ConnectableElement">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="end" upperBound="-1"
+            eType="#//classPackage/StructuredClassifierPackage/ConnectorEnd" derived="true"
+            eOpposite="#//classPackage/StructuredClassifierPackage/ConnectorEnd/role"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Connector">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//classPackage/AssociationPackage/Association"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="end" lowerBound="2"
+            upperBound="-1" eType="#//classPackage/StructuredClassifierPackage/ConnectorEnd"
+            containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="contract" upperBound="-1"
+            eType="#//behaviorPackage/BehaviorPackage/Behavior"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="ConnectorEnd">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="definingEnd" eType="#//classPackage/PropertyPackage/Property"
+            derived="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
+            eType="#//classPackage/StructuredClassifierPackage/ConnectableElement"
+            eOpposite="#//classPackage/StructuredClassifierPackage/ConnectableElement/end"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="ClassifierPackage" nsURI="http://www.example.org/ClassifierPackage"
+        nsPrefix="ClassifierPackage">
+      <eClassifiers xsi:type="ecore:EClass" name="Classifier">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
+            eType="#//classPackage/PropertyPackage/Property" derived="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="nestingClass" eType="#//classPackage/ClassPackage/Class"
+            eOpposite="#//classPackage/ClassPackage/Class/nestedClassifier"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="stateMachinePackage" nsURI="http://www.example.org/stateMachinePackage"
+      nsPrefix="stateMachinePackage">
+    <eSubpackages name="StatePackage" nsURI="http://www.example.org/uML/StatePackage"
+        nsPrefix="StatePackage">
+      <eClassifiers xsi:type="ecore:EClass" name="Region">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="supervertex" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Vertex" containment="true"
+            eOpposite="#//stateMachinePackage/StatePackage/Vertex/container"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Transition" containment="true"
+            eOpposite="#//stateMachinePackage/StatePackage/Transition/container"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Vertex">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="incomming" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Transition" eOpposite="#//stateMachinePackage/StatePackage/Transition/target"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Transition" eOpposite="#//stateMachinePackage/StatePackage/Transition/souce"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//stateMachinePackage/StatePackage/Region"
+            eOpposite="#//stateMachinePackage/StatePackage/Region/supervertex"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Transition">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+            eType="#//stateMachinePackage/StatePackage/Vertex" eOpposite="#//stateMachinePackage/StatePackage/Vertex/incomming"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="souce" lowerBound="1"
+            eType="#//stateMachinePackage/StatePackage/Vertex" eOpposite="#//stateMachinePackage/StatePackage/Vertex/outgoing"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="container" lowerBound="1"
+            eType="#//stateMachinePackage/StatePackage/Region" eOpposite="#//stateMachinePackage/StatePackage/Region/transition"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="effect" eType="#//behaviorPackage/BehaviorPackage/Behavior"
+            containment="true" eOpposite="#//behaviorPackage/BehaviorPackage/Behavior/transition"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="StateMachine" eSuperTypes="#//behaviorPackage/BehaviorPackage/Behavior">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="region" lowerBound="1"
+            upperBound="-1" eType="#//stateMachinePackage/StatePackage/Region" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="connrctionPoint" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Pseudostate" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="submachineState" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/State" eOpposite="#//stateMachinePackage/StatePackage/State/statemachine"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//stateMachinePackage/StatePackage/Vertex">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="region" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Region" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="connectionPoint" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Pseudostate" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="connection" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/ConnectionPointReference" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="statemachine" eType="#//stateMachinePackage/StatePackage/StateMachine"
+            eOpposite="#//stateMachinePackage/StatePackage/StateMachine/submachineState"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//behaviorPackage/BehaviorPackage/Behavior"
+            containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="exit" eType="#//behaviorPackage/BehaviorPackage/Behavior"
+            containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="doActivity" eType="#//behaviorPackage/BehaviorPackage/Behavior"
+            containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Pseudostate" eSuperTypes="#//stateMachinePackage/StatePackage/Vertex"/>
+      <eClassifiers xsi:type="ecore:EClass" name="ConnectionPointReference" eSuperTypes="#//stateMachinePackage/StatePackage/Vertex">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="entry" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Pseudostate"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="exit" upperBound="-1"
+            eType="#//stateMachinePackage/StatePackage/Pseudostate"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>
