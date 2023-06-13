@@ -1,2 +1,2 @@
 # UMLStateMachine
-UML仕様書からUMLステートマシン図のメタモデルを再現する
+ObeoDesinerを使って、UML仕様書からUMLクラス図とステートマシン図のecoreメタモデルを再現する
